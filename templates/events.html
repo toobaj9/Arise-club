@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARISE Club Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <section class="events-section">
+    <div class="events-header">
+      <h2>Upcoming Events</h2>
+      <p>Join us for exciting events that combine academic excellence with fun and networking opportunities!</p>
+    </div>
+
+    <div class="events-container">
+      <div class="event-card featured">
+        <div class="event-date">
+          <span class="month">Sep</span>
+          <span class="day">TBD</span>
+        </div>
+        <div class="event-content">
+          <h3>🎪 Club Fair 2025</h3>
+          <p class="event-time">📅 September 2025 • All Day</p>
+          <p class="event-location">📍 Campus Wide</p>
+          <p class="event-description">Join us at the UTSC Club Fair! Come visit our booth to learn more about ARISE, meet our executive team, and discover exciting research opportunities. We'll have interactive activities, sign-up forms, and information about our upcoming events. Perfect opportunity to connect with like-minded students passionate about research and academic excellence!</p>
+          <div class="event-tags">
+            <span class="tag">Recruitment</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Information</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card featured">
+        <div class="event-date">
+          <span class="month">Oct</span>
+          <span class="day">TBD</span>
+        </div>
+        <div class="event-content">
+          <h3>👋 Meet the Members & CV Workshop</h3>
+          <p class="event-time">📅 First or Second Week of October 2025 • 1 Hour</p>
+          <p class="event-location">📍 TBD</p>
+          <p class="event-description">Our first official event! Join us for a quick 1-hour session featuring meet the members, ice-breakers, and workshops for CVs and Resumes. This event will be held a couple of weeks following the club fair. Final details will be announced by September 14th!</p>
+          <div class="event-tags">
+            <span class="tag">Workshop</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Professional Development</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="month">Fall</span>
+          <span class="day">TBD</span>
+        </div>
+        <div class="event-content">
+          <h3>🔬 Multi-Disciplinary Research Mix & Mingle</h3>
+          <p class="event-time">📅 Fall 2025 • TBD</p>
+          <p class="event-location">📍 TBD</p>
+          <p class="event-description">A mix-and-mingle concept to introduce research across multiple disciplines. We'll explore research in sociology, anthropology, political science, economics, AI, business, population health, and computer science. Perfect for discovering new research interests and connecting with like-minded students!</p>
+          <div class="event-tags">
+            <span class="tag">Research</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Academic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card featured">
+        <div class="event-date">
+          <span class="month">Winter</span>
+          <span class="day">TBD</span>
+        </div>
+        <div class="event-content">
+          <h3>🎤 Research Opportunities Panelist Event</h3>
+          <p class="event-time">📅 Winter 2025 • TBD</p>
+          <p class="event-location">📍 TBD</p>
+          <p class="event-description">Our grand finale event! Join us for an exciting panel discussion featuring professors and researchers who will share available research opportunities across various disciplines. This is your chance to discover what research is available and connect directly with faculty members. We're currently compiling our panelist list throughout the fall semester and will reach out to potential speakers in November. Stay tuned for updates!</p>
+          <div class="event-tags">
+            <span class="tag">Panel</span>
+            <span class="tag">Research</span>
+            <span class="tag">Opportunities</span>
+            <span class="tag">Faculty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="past-events">
+      <h3>Past Events</h3>
+      <div class="events-container">
+        <div class="event-card featured">
+          <div class="event-date">
+            <span class="month">Aug</span>
+            <span class="day">30</span>
+          </div>
+          <div class="event-content">
+            <h3>🎓 Frosh Week 2025</h3>
+            <p class="event-time">📅 August 30, 2025 • All Day</p>
+            <p class="event-location">📍 Campus Wide</p>
+            <p class="event-description">ARISE participated in Frosh Week 2025! We hosted exciting activities including dice games with research article titles and bingo games to engage new students. Our tabling featured interactive sign-up forms and fun activities to introduce students to our club's mission of academic excellence, research, and innovation.</p>
+            <div class="event-tags">
+              <span class="tag">Frosh</span>
+              <span class="tag">Recruitment</span>
+              <span class="tag">Interactive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-cta">
+      <h3>Want to Stay Updated?</h3>
+      <p>Follow us on social media or join our mailing list to never miss an event!</p>
+      <div class="cta-buttons">
+        <a href="{{ url_for('join') }}" class="cta-btn">Join Our Club</a>
+        <a href="{{ url_for('feedback') }}" class="cta-btn secondary">Suggest an Event</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Arise Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add RSVP functionality
+    document.querySelectorAll('.rsvp-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('RSVP feature coming soon! Please email utsc.arise@outlook.com to reserve your spot.');
+      });
+    });
+  </script>
+</body>
+</html>

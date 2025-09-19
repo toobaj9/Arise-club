@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Arise Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+  <section class="join">
+    <div class="join-header">
+      <h2>Join ARISE Club</h2>
+      <p>Become part of a vibrant community dedicated to academic excellence, research innovation, and scientific discovery. Join us in shaping the future of academic research!</p>
+    </div>
+
+    <div class="membership-benefits">
+      <h3>Membership Benefits</h3>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h4>🔬 Research Opportunities</h4>
+          <p>Free access to events and workshops</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🎓 Academic Support</h4>
+          <p>Exclusive Discord roles and channels</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🌟 Networking</h4>
+          <p>Priority sign-up for future events</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🤝 Staying upto date</h4>
+          <p>Join the mailing list with monthly newsletter</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="join-form-container">
+      <h3>Membership Registration</h3>
+      <div class="inner_box">
+        <form class="membership-form" action="#" method="POST">
+          <div class="form-row">
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+          </div>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <select name="program" required>
+            <option value="">Select Your Program</option>
+            <option value="computer-science">Computer Science</option>
+            <option value="biology">Biology</option>
+            <option value="chemistry">Chemistry</option>
+            <option value="physics">Physics</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="psychology">Psychology</option>
+            <option value="other">Other</option>
+          </select>
+          <select name="year" required>
+            <option value="">Year of Study</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="graduate">Graduate Student</option>
+          </select>
+          <textarea name="interests" placeholder="Tell us about your research interests and why you want to join Arise Club..." rows="4"></textarea>
+          <div class="checkbox-container">
+            <label>
+              <input type="checkbox" name="newsletter" checked>
+              Subscribe to our newsletter for updates on events and opportunities
+            </label>
+          </div>
+          <button type="submit" class="register-btn">Submit Application</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="membership-fee">
+      <h3>Membership Fee</h3>
+      <div class="fee-info">
+        <p class="fee-amount">$5 CAD per school year</p>
+        <p class="fee-description">Your membership fee helps fund events, workshops, research resources, and club activities.</p>
+        
+        <!-- Payment Options -->
+        <div class="payment-options">
+          <h4>Payment Methods</h4>
+          <div class="payment-buttons">
+            <button class="payment-btn etransfer-btn" onclick="showETransferInfo()">
+              📧 E-Transfer
+            </button>
+          </div>
+        </div>
+
+        <div id="etransfer-info" class="payment-info" style="display: none;">
+          <h5>E-Transfer Instructions</h5>
+          <p><strong>Send to:</strong> utsc.arise@outlook.com</p>
+          <p><strong>Security Question:</strong> What is the club name?</p>
+          <p><strong>Answer:</strong> Arise</p>
+          <p><strong>Note:</strong> Please include your full name and email in the message</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <h3>Questions?</h3>
+      <p>Contact us at <a href="mailto:utsc.arise@outlook.com">utsc.arise@outlook.com</a> for any questions about membership.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Arise Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showETransferInfo() {
+      const info = document.getElementById('etransfer-info');
+      info.style.display = info.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Form submission handler
+    document.querySelector('.membership-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form_data = new FormData(this);
+      const data = Object.fromEntries(form_data);
+      //form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+         // data[checkbox.name] = checkbox.checked;
+      //});
+      fetch('/submit_membership', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        alert(result.message);
+        this.reset();
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('An error occured during member registration. Please try again later.');
+      });
+    });
+  </script>
+</body>
+</html>

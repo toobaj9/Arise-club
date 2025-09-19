@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Login - ARISE Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+
+  <section class="login-section">
+    <div class="login-container">
+      <div class="login-header">
+        <h2>Member Login</h2>
+        <p>Access exclusive research resources, resume templates, and member-only content</p>
+      </div>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %} 
+          <div class="flash-messages">
+            {% for message in messages %}
+              <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="login-form-container">
+        <div class="inner_box_login">
+          <form class="login-form" id="loginForm" method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your registered email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" name="remember">
+                <span class="checkmark"></span>
+                Remember me
+              </label>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            
+            <button type="submit" class="login-btn">Login</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="login-info">
+        <h3>Not a member yet?</h3>
+        <p>Join ARISE Club to access exclusive research resources, networking opportunities, and professional development materials.</p>
+        <a href="{{ url_for('join') }}" class="join-link">Become a Member</a>
+      </div>
+
+      <div class="member-benefits">
+        <h3>Member-Only Benefits</h3>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">📄</span>
+            <div class="benefit-content">
+              <h4>Resume & CV Templates</h4>
+              <p>Professional templates tailored for research positions</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🔬</span>
+            <div class="benefit-content">
+              <h4>Research Opportunities Database</h4>
+              <p>Exclusive access to research positions and projects</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">📚</span>
+            <div class="benefit-content">
+              <h4>Academic Resources</h4>
+              <p>Study guides, research methodologies, and writing tips</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🎯</span>
+            <div class="benefit-content">
+              <h4>Career Guidance</h4>
+              <p>One-on-one mentorship and career planning resources</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ARISE Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+          <li><a href="{{ url_for('login') }}">Member Login</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 ARISE Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple login simulation
+    //document.getElementById('loginForm').addEventListener('submit', function(e) {
+      //e.preventDefault();
+      
+      //const email = document.getElementById('email').value;
+      //const password = document.getElementById('password').value;
+      
+      // Simple validation - in a real app, this would connect to a backend
+      //if (email && password) {
+        // Store login state in sessionStorage
+        //sessionStorage.setItem('isLoggedIn', 'true');
+        //sessionStorage.setItem('userEmail', email);
+        
+        // Redirect to resources page
+        //window.location.href = "{{ url_for('resources') }}";
+      //} else {
+       // alert('Please enter both email and password.');
+      //}
+    //});
+
+    // Check if user is already logged in
+    //if (sessionStorage.getItem('isLoggedIn') === 'true') {
+     // window.location.href = "{{ url_for('resources') }}";
+    //}
+  </script>
+</body>
+</html>

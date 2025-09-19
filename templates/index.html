@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTSC Arise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <header class="banner">
+    <div class="banner-content">
+      <h1> ARISE </h1>
+      <p>Love Academic, Research, Innovation, <br> and Scientific Research?</p>
+      <a href="{{ url_for('join') }}" class="cta-btn">Join Us</a>
+    </div>
+    <img src="{{ url_for('static', filename='images/arise_logo.png') }}" alt="Arise Logo" class="arise_logo">
+  </header>
+
+  <!-- Mission -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <p>We strive to empower students through leadership, collaboration, and creativity while building a vibrant community.</p>
+    <img src="{{ url_for('static', filename='images/mission_gif.GIF') }}" alt="Mission GIF" class="mission-gif">
+  </section>
+
+  <!-- why ARISE-->
+  <section class="why-arise">
+    <h2>Why ARISE?</h2>
+    <p class="why-intro">Join a community that's passionate about research, innovation, and making a real impact. Here's what makes ARISE special:</p>
+    
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h3>Research Opportunities</h3>
+        <p>Connect with professors, access exclusive research databases, and find opportunities that match your interests across all disciplines.</p>
+      </div>
+      
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>Collaborative Community</h3>
+        <p>Join a diverse group of students who share your passion for learning and discovery. Build lasting friendships and professional networks.</p>
+      </div>
+      
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h3>Professional Development</h3>
+        <p>Enhance your resume with research experience, develop critical thinking skills, and gain mentorship from experienced researchers.</p>
+      </div>
+      
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <h3>Innovation Focus</h3>
+        <p>Explore cutting-edge research, learn about emerging technologies, and contribute to projects that drive societal change.</p>
+      </div>
+      
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3>Career Preparation</h3>
+        <p>Get access to exclusive resources, resume templates, and career guidance to prepare for graduate school and research careers.</p>
+      </div>
+      
+      <div class="why-card">
+        <div class="why-icon">🌟</div>
+        <h3>Leadership Skills</h3>
+        <p>Take on leadership roles, organize events, and develop skills that will serve you throughout your academic and professional journey.</p>
+      </div>
+    </div>
+
+   <!-- <div class="testimonials">
+      <h3>What Our Members Say</h3>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"ARISE opened doors to research opportunities I never knew existed. The networking events helped me connect with professors and land my first research position."</p>
+            <div class="testimonial-author">
+              <strong>Sarah Chen</strong>
+              <span>3rd Year Biology Student</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"The CV workshops and career guidance sessions were incredibly helpful. I felt so much more confident applying for research positions after joining ARISE."</p>
+            <div class="testimonial-author">
+              <strong>Marcus Rodriguez</strong>
+              <span>2nd Year Computer Science</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"Being part of ARISE helped me discover my passion for interdisciplinary research. The community is supportive and the events are always engaging."</p>
+            <div class="testimonial-author">
+              <strong>Priya Patel</strong>
+              <span>4th Year Psychology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+  <!-- Exec Team -->
+  <section class="team">
+    <h2>Meet Our Team</h2>
+    
+    <!-- Founders -->
+    <div class="team-category">
+      <h3>Founders & Leadership</h3>
+      <div class="team-grid">
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Hayley Wong.jpg') }}" alt="Hayley Wong">
+          <h4>Hayley Wong</h4>
+          <p>Co-President</p>
+        </div>
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Lakesha V.jpg') }}" alt="Lakesha V">
+          <h4>Lakesha V</h4>
+          <p>Co-President</p>
+        </div>
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Nikethas_image.jpg') }}" alt="Niketha">
+          <h4>Niketha</h4>
+          <p>Vice President</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing -->
+    <div class="team-category">
+      <h3>Marketing</h3>
+      <div class="team-grid">
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Khadija Noor.jpeg') }}" alt="Khadija Noor">
+          <h4>Khadija Noor</h4>
+          <p>Marketing Director</p>
+        </div>
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Jessica Tai.jpeg') }}" alt="Jessica Tai">
+          <h4>Jessica Tai</h4>
+          <p>Marketing Director</p>
+        </div>
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/tooba_image.JPG') }}" alt="Tooba">
+          <h4>Tooba</h4>
+          <p>Marketing Director</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Administration -->
+    <div class="team-category">
+      <h3>Administration</h3>
+      <div class="team-grid">
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Picture of Myself - Dilaksha Sutharjan.jpg') }}" alt="Dilaksha Sutharjan">
+          <h4>Dilaksha Sutharjan</h4>
+          <p>Director of Administration</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events -->
+    <div class="team-category">
+      <h3>Events</h3>
+      <div class="team-grid">
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Ananya Varshney.jpeg') }}" alt="Ananya Varshney">
+          <h4>Ananya Varshney</h4>
+          <p>Event Director</p>
+        </div>
+        <div class="member">
+          <img src="{{ url_for('static', filename='images/Lisa Jeon.jpeg') }}" alt="Lisa Jeon">
+          <h4>Lisa Jeon</h4>
+          <p>Event Coordinator</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Arise Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

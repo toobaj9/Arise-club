@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - ARISE Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+  <section class="feedback">
+    <div class="feedback-header">
+      <h2>We Value Your Feedback</h2>
+      <p>Your input helps us improve our events, initiatives, and overall club experience. We appreciate every suggestion!</p>
+    </div>
+
+    <div class="feedback-options">
+      <div class="feedback-tabs">
+        <button class="tab-btn active" onclick="showTab('general')">General Feedback</button>
+        <button class="tab-btn" onclick="showTab('event')">Event Feedback</button>
+        <button class="tab-btn" onclick="showTab('suggestion')">Suggestions</button>
+      </div>
+
+      <!-- General Feedback Tab -->
+      <div id="general-tab" class="tab-content active">
+        <h3>General Feedback</h3>
+        <div class="inner_box_general">
+          <form class="feedback-form" id="general-form">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Your Name (Optional)">
+              <input type="email" name="email" placeholder="Your Email (Optional)">
+            </div>
+            <select name="category" required>
+              <option value="">Select Category</option>
+              <option value="overall-experience">Overall Experience</option>
+              <option value="communication">Communication</option>
+              <option value="leadership">Leadership</option>
+              <option value="resources">Resources & Support</option>
+              <option value="website">Website</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="rating-section">
+              <label>How would you rate your overall experience with ARISE Club?</label>
+              <div class="rating-stars">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+              </div>
+              <input type="hidden" name="rating" id="rating-value">
+            </div>
+            <textarea name="feedback" placeholder="Please share your thoughts, experiences, or any feedback about the club..." rows="5" required></textarea>
+            <button type="submit">Submit Feedback</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Event Feedback Tab -->
+      <div id="event-tab" class="tab-content">
+        <h3>Event Feedback</h3>
+        <div class="inner_box_event">
+          <form class="feedback-form" id="event-form">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Your Name (Optional)">
+              <input type="email" name="email" placeholder="Your Email (Optional)">
+            </div>
+            <input type="text" name="event-name" placeholder="Event Name" required>
+            <input type="date" name="event-date" required>
+            <div class="rating-section">
+              <label>How would you rate this event?</label>
+              <div class="rating-stars">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+              </div>
+              <input type="hidden" name="event-rating" id="event-rating-value">
+            </div>
+            <textarea name="event-feedback" placeholder="What did you think of the event? What went well? What could be improved?" rows="5" required></textarea>
+            <div class="checkbox-container">
+              <label>
+                <input type="checkbox" name="future-events">
+                I would like to attend similar events in the future
+              </label>
+            </div>
+            <button type="submit">Submit Event Feedback</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Suggestions Tab -->
+      <div id="suggestion-tab" class="tab-content">
+        <h3>Suggestions & Ideas</h3>
+        <div class="inner_box_sugg">
+          <form class="feedback-form" id="suggestion-form">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Your Name (Optional)">
+              <input type="email" name="email" placeholder="Your Email (Optional)">
+            </div>
+            <select name="suggestion-type" required>
+              <option value="">Type of Suggestion</option>
+              <option value="new-event">New Event Idea</option>
+              <option value="workshop">Workshop Topic</option>
+              <option value="collaboration">Collaboration Opportunity</option>
+              <option value="resource">Resource Request</option>
+              <option value="improvement">Process Improvement</option>
+              <option value="other">Other</option>
+            </select>
+            <input type="text" name="suggestion-title" placeholder="Brief Title of Your Suggestion" required>
+            <textarea name="suggestion-details" placeholder="Please describe your suggestion in detail. Include any relevant information such as potential speakers, resources needed, target audience, etc." rows="6" required></textarea>
+            <div class="checkbox-container">
+              <label>
+                <input type="checkbox" name="volunteer">
+                I would be interested in helping organize or volunteer for this
+              </label>
+            </div>
+            <button type="submit">Submit Suggestion</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-info">
+      <h3>Other Ways to Reach Us</h3>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <h4>📧 Email</h4>
+          <p><a href="mailto:utsc.arise@outlook.com">utsc.arise@outlook.com</a></p>
+        </div>
+        <div class="contact-method">
+          <h4>📱 Social Media</h4>
+          <p>Follow us for updates and quick questions</p>
+          <p><a href="https://www.instagram.com/utsc.arise/">https://www.instagram.com/utsc.arise/</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-stats">
+      <h3>Your Voice Matters</h3>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">127</span>
+          <span class="stat-label">Feedback Responses</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">23</span>
+          <span class="stat-label">Suggestions Implemented</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4.8</span>
+          <span class="stat-label">Average Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Tab functionality
+    function showTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Show selected tab
+      document.getElementById(tabName + '-tab').classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Star rating functionality
+    document.querySelectorAll('.rating-stars').forEach(ratingContainer => {
+      const stars = ratingContainer.querySelectorAll('.star');
+      const hiddenInput = ratingContainer.parentNode.querySelector('input[type="hidden"]');
+      
+      stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+          const rating = index + 1;
+          hiddenInput.value = rating;
+          
+          // Update visual feedback
+          stars.forEach((s, i) => {
+            if (i < rating) {
+              s.style.filter = 'grayscale(0%)';
+              s.style.transform = 'scale(1.2)';
+            } else {
+              s.style.filter = 'grayscale(100%)';
+              s.style.transform = 'scale(1)';
+            }
+          });
+        });
+
+        star.addEventListener('mouseenter', () => {
+          stars.forEach((s, i) => {
+            if (i <= index) {
+              s.style.filter = 'grayscale(0%)';
+            } else {
+              s.style.filter = 'grayscale(100%)';
+            }
+          });
+        });
+      });
+
+      ratingContainer.addEventListener('mouseleave', () => {
+        const currentRating = parseInt(hiddenInput.value) || 0;
+        stars.forEach((s, i) => {
+          if (i < currentRating) {
+            s.style.filter = 'grayscale(0%)';
+            s.style.transform = 'scale(1.2)';
+          } else {
+            s.style.filter = 'grayscale(100%)';
+            s.style.transform = 'scale(1)';
+          }
+        });
+      });
+    });
+
+    // Form submission handlers
+    document.querySelectorAll('.feedback-form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(form);
+        const formType = form.id;
+        const data = Object.fromEntries(formData);
+        form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          data[checkbox.name] = checkbox.checked;
+        });
+        let endpoint = '';
+
+        if (formType === 'general-form') {
+          endpoint = '/submit_general_feedback';
+        } else if (formType === 'event-form') {
+          endpoint = '/submit_event_feedback';
+        } else if (formType === 'suggestion-form') {
+          endpoint = '/submit_suggestion';
+        }
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+          alert(result.message);
+          form.reset();
+          // Reset star ratings
+          document.querySelectorAll('.star').forEach(star => {
+            star.style.filter = 'grayscale(100%)';
+            star.style.transform = 'scale(1)';
+          });
+          document.querySelectorAll('input[type="hidden"]').forEach(input => {
+            input.value = '';
+          });
+          console.log(`${formType} submitted:`, data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occured while submitting your feedback. Please try again later.');
+        })
+        // Simulate form submission
+        // alert('Thank you for your feedback! We appreciate your input and will review it carefully. You should receive a confirmation email shortly.');
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 ARISE Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

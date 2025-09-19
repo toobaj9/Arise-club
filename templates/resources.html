@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Resources - ARISE Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <section class="resources-section">
+    <div class="resources-header">
+      <h2>Member Resources</h2>
+      <p>Welcome back! Access your exclusive research resources and professional development materials.</p>
+      <div class="user-info">
+        <span>Logged in as: <strong>{{ user_email }}</strong></span>
+      </div>
+    </div>
+
+    <div class="resources-container">
+      <!-- Resume & CV Resources -->
+      <div class="resource-category">
+        <h3>📄 Resume & CV Resources</h3>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>Academic CV Template</h4>
+            <p>Professional template specifically designed for research positions and academic applications.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('academic-cv-template.docx')">Download Template</a>
+              <a href="#" class="preview-btn" onclick="previewResource('academic-cv')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Research Resume Template</h4>
+            <p>Industry-focused resume template highlighting research experience and technical skills.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('research-resume-template.docx')">Download Template</a>
+              <a href="#" class="preview-btn" onclick="previewResource('research-resume')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Cover Letter Templates</h4>
+            <p>Professional cover letter templates for research positions and academic applications.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('cover-letter-templates.docx')">Download Templates</a>
+              <a href="#" class="preview-btn" onclick="previewResource('cover-letters')">Preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Opportunities -->
+      <div class="resource-category">
+        <h3>🔬 Research Opportunities</h3>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>UTSC Research Database</h4>
+            <p>Comprehensive database of research opportunities available at UTSC across all disciplines.</p>
+            <div class="resource-actions">
+              <a href="#" class="access-btn" onclick="accessDatabase('utsc-research')">Access Database</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>External Research Programs</h4>
+            <p>Curated list of research programs, internships, and opportunities outside of UTSC.</p>
+            <div class="resource-actions">
+              <a href="#" class="access-btn" onclick="accessDatabase('external-research')">View Programs</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Grant & Funding Opportunities</h4>
+            <p>Information about research grants, scholarships, and funding opportunities for students.</p>
+            <div class="resource-actions">
+              <a href="#" class="access-btn" onclick="accessDatabase('funding-opportunities')">View Opportunities</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Resources -->
+      <div class="resource-category">
+        <h3>📚 Academic Resources</h3>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>Research Methodology Guide</h4>
+            <p>Comprehensive guide covering different research methodologies and best practices.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('research-methodology-guide.pdf')">Download Guide</a>
+              <a href="#" class="preview-btn" onclick="previewResource('methodology-guide')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Academic Writing Resources</h4>
+            <p>Writing guides, citation styles, and tips for academic papers and research reports.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('academic-writing-guide.pdf')">Download Guide</a>
+              <a href="#" class="preview-btn" onclick="previewResource('writing-guide')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Study Strategies & Tips</h4>
+            <p>Evidence-based study strategies and time management techniques for academic success.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('study-strategies.pdf')">Download Guide</a>
+              <a href="#" class="preview-btn" onclick="previewResource('study-strategies')">Preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Development -->
+      <div class="resource-category">
+        <h3>🎯 Career Development</h3>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h4>Career Planning Workbook</h4>
+            <p>Interactive workbook to help you plan your academic and professional career path.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('career-planning-workbook.pdf')">Download Workbook</a>
+              <a href="#" class="preview-btn" onclick="previewResource('career-workbook')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Networking Guide</h4>
+            <p>Tips and strategies for building professional networks in academia and research.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('networking-guide.pdf')">Download Guide</a>
+              <a href="#" class="preview-btn" onclick="previewResource('networking-guide')">Preview</a>
+            </div>
+          </div>
+          
+          <div class="resource-card">
+            <h4>Interview Preparation</h4>
+            <p>Comprehensive guide for preparing for research interviews and academic positions.</p>
+            <div class="resource-actions">
+              <a href="#" class="download-btn" onclick="downloadResource('interview-prep-guide.pdf')">Download Guide</a>
+              <a href="#" class="preview-btn" onclick="previewResource('interview-prep')">Preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-support">
+      <h3>Need Additional Support?</h3>
+      <p>Our executive team is here to help you succeed. Reach out for personalized guidance and support.</p>
+      <div class="support-options">
+        <a href="mailto:utsc.arise@outlook.com" class="support-btn">Email Support</a>
+        <a href="{{ url_for('feedback') }}" class="support-btn secondary">Request Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ARISE Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+          <li><a href="{{ url_for('login') }}">Member Login</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 ARISE Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Check if user is logged in
+    //if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+     // window.location.href = "{{ url_for('login') }}";
+    //}
+
+    // Display user email
+    //document.getElementById('userEmail').textContent = sessionStorage.getItem('userEmail') || 'Member';
+
+    // Logout function
+    //function logout() {
+      //sessionStorage.removeItem('isLoggedIn');
+      //sessionStorage.removeItem('userEmail');
+      //window.location.href = "{{ url_for('login') }}";
+    //}
+
+    // Resource functions
+    function downloadResource(filename) {
+      alert(`Downloading ${filename}...\n\nNote: This is a demo. In a real application, this would download the actual file.`);
+    }
+
+    function previewResource(resourceType) {
+      alert(`Previewing ${resourceType}...\n\nNote: This is a demo. In a real application, this would show a preview of the resource.`);
+    }
+
+    function accessDatabase(databaseType) {
+      alert(`Accessing ${databaseType} database...\n\nNote: This is a demo. In a real application, this would open the database interface.`);
+    }
+  </script>
+</body>
+</html>
