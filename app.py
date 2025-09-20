@@ -178,6 +178,11 @@ def logout():
     flash('You have been Logged out.')
     return redirect(url_for('login'))
 
+@app.route('/init-db')
+def init_db():
+    db.create_all()
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
