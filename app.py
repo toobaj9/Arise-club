@@ -9,7 +9,9 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'my_secret_key')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///arise.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///arise.db')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///arise.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://toobaj9:Arise_club123$@toobaj9.mysql.pythonanywhere-services.com/toobaj9$arise_db'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
