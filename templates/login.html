@@ -45,7 +45,19 @@
           </div>
         {% endif %}
       {% endwith %}
-
+      <div id="forget-pass-box" class="modal-overlay" style="display: none;">
+        <div class="forget-pass-form">
+          <button class="exit-button" id="exitResetBtn">&times;</button>
+          <h3>Reset Your Password</h3>
+          <p>Enter your email address and we will send you a link to reset your password.</p>
+          
+          <form id="resetRequestForm" class="items" method="POST" action="{{ url_for('forgot_password') }}">
+            <label for="reset-email">Email:</label>
+            <input type="email" id="reset-email" name="email" placeholder="Enter your email" required>
+            <button type="submit" class="reset-btn">Send Reset Link</button>
+          </form>
+        </div>
+	    </div>
       <div class="login-form-container">
         <div class="inner_box_login">
           <form class="login-form" id="loginForm" method="POST" action="{{ url_for('login') }}">
@@ -159,30 +171,25 @@
   </footer>
 
   <script>
-    // Simple login simulation
-    //document.getElementById('loginForm').addEventListener('submit', function(e) {
-      //e.preventDefault();
-      
-      //const email = document.getElementById('email').value;
-      //const password = document.getElementById('password').value;
-      
-      // Simple validation - in a real app, this would connect to a backend
-      //if (email && password) {
-        // Store login state in sessionStorage
-        //sessionStorage.setItem('isLoggedIn', 'true');
-        //sessionStorage.setItem('userEmail', email);
-        
-        // Redirect to resources page
-        //window.location.href = "{{ url_for('resources') }}";
-      //} else {
-       // alert('Please enter both email and password.');
-      //}
-    //});
-
-    // Check if user is already logged in
-    //if (sessionStorage.getItem('isLoggedIn') === 'true') {
-     // window.location.href = "{{ url_for('resources') }}";
-    //}
+    document.addEventListener("DOMContentLoaded", function () {
+			const forgotLink = document.querySelector(".forgot-password");
+			const forgetBox = document.getElementById("forget-pass-box");
+			const exitButton = document.querySelector(".exit-button");
+			
+			forgotLink.addEventListener("click", function (event) {
+				event.preventDefault();
+				forgetBox.style.display = "flex";
+			});
+			forgetBox.addEventListener("click", function (e) {
+				if (e.target === forgetBox) {
+					forgetBox.style.display = "none";
+				}
+			});
+			// Hide the popup when clicking the X button
+			exitButton.addEventListener("click", function () {
+				forgetBox.style.display = "none";
+			});
+		});
   </script>
 </body>
 </html>

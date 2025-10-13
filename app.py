@@ -4,6 +4,8 @@ from flask import flash
 from datetime import datetime
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -13,7 +15,16 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'my_secret_key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ariseClub:Research123$@ariseClub.mysql.pythonanywhere-services.com/ariseClub$arise_db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'arise.norply.utsc@outlook.com'
+# IMPORTANT: Use an App Password if 2FA is on for your Outlook account
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'eoxtfedppnqjwmto') 
+app.config['MAIL_DEFAULT_SENDER'] = 'arise.norply.utsc@outlook.com'
 db = SQLAlchemy(app)
+mail = Mail(app)
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -180,12 +191,73 @@ def logout():
     flash('You have been Logged out.')
     return redirect(url_for('login'))
 
-@app.route('/init-db')
-def init_db():
-    db.create_all()
+@app.route('/forgot_password', methods=['POST'])
+def forgot_password():
+    email = request.form.get('email')
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        flash('If an account with that email exists, a password reset link has been sent.')
+        return redirect(url_for('login'))
+
+    token = serializer.dumps(user.id, salt='password-reset-salt')
+    reset_url = url_for('reset_token', token=token, _external=True)
+    msg = Message('ARISE Club Password Reset Request', recipients=[user.email])
+    msg.body = f"""
+    Dear {user.first_name},
+
+    You requested a password reset. Click this link to set a new password:
+    {reset_url}
+
+    This link expires in 1 hour.
+
+    The ARISE Club Team
+    """
+    try:
+        mail.send(msg)
+        flash('If an account with that email exists, a password reset link has been sent to your email.')
+    except Exception as e:
+        print(f"ERROR: Email sending failed: {e}")
+        flash('An error occurred while sending the email. Please try again later.')
+
+    return redirect(url_for('login'))
+
+@app.route('/reset/<token>', methods=['GET', 'POST'])
+def reset_token(token):
+    try:
+        user_id = serializer.loads(token, salt='password-reset-salt', max_age=3600)
+    except SignatureExpired:
+        flash('The password reset link has expired. Please request a new one.')
+        return redirect(url_for('login'))
+    except:
+        flash('The password reset link is invalid. Please request a new one.')
+        return redirect(url_for('login'))
+    
+    user = User.query.get(user_id)
+    if not user:
+        flash('Invalid user associated with this link.')
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        new_password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        if new_password != confirm_password:
+            flash('Passwords do not match.')
+            return render_template('reset_password_form.html', token=token)
+        hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
+        user.password = hashed_password
+        db.session.commit()
+
+        flash('Your password has been successfully updated! You can now log in.')
+        return redirect(url_for('login'))
+    return render_template('reset_password_form.html', token=token)
+
+#@app.route('/init-db')
+#def init_db():
+    #db.create_all()
 
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    #with app.app_context():
+        #db.create_all()
     app.run(debug=True)
