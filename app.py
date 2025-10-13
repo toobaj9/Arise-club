@@ -15,13 +15,13 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'my_secret_key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ariseClub:Research123$@ariseClub.mysql.pythonanywhere-services.com/ariseClub$arise_db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'arise.norply.utsc@outlook.com'
+app.config['MAIL_USERNAME'] = 'arise.norply.utsc@gmail.com'
 # IMPORTANT: Use an App Password if 2FA is on for your Outlook account
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'eoxtfedppnqjwmto') 
-app.config['MAIL_DEFAULT_SENDER'] = 'arise.norply.utsc@outlook.com'
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'mooy szci xuxo ldhn') 
+app.config['MAIL_DEFAULT_SENDER'] = 'arise.norply.utsc@gmail.com'
 db = SQLAlchemy(app)
 mail = Mail(app)
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
@@ -254,8 +254,11 @@ def reset_token(token):
 
 #@app.route('/init-db')
 #def init_db():
-    #db.create_all()
+    #with app.app_context():
+       # db.create_all()
 
+    # CRITICAL: Return a response to prevent the TypeError
+    #return "Database tables created successfully!"
 
 if __name__ == '__main__':
     #with app.app_context():
