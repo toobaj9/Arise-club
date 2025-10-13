@@ -12,8 +12,9 @@ bcrypt = Bcrypt(app)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'my_secret_key')
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///arise.db'
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///arise.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ariseClub:Research123$@ariseClub.mysql.pythonanywhere-services.com/ariseClub$arise_db'
-app.config['SQLALCHEMY_POOL_RECYCLE'] = 280
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ariseClub:Research123$@ariseClub.mysql.pythonanywhere-services.com/ariseClub$arise_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ariseClub:Research123$@ariseClub.mysql.pythonanywhere-services.com/ariseClub$arise_db?charset=utf8mb4&pool_recycle=280'
+#app.config['SQLALCHEMY_POOL_RECYCLE'] = 280
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
