@@ -252,10 +252,10 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_password_form.html', token=token)
 
-#@app.route('/init-db')
-#def init_db():
-    #with app.app_context():
-       # db.create_all()
+@app.route('/init-db')
+def init_db():
+    with app.app_context():
+       db.create_all()
 
     # CRITICAL: Return a response to prevent the TypeError
     #return "Database tables created successfully!"
