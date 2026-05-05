@@ -77,7 +77,7 @@
 				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
 					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
-					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					  <h2 class="text-h3" style="margin: 0;">Did you know?</h2>
 					</div>
 				</div>
 				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>Insulin</strong> was discovered <em>in</em> Canada, transforming diabetes care worldwide.</p>
@@ -86,7 +86,7 @@
 				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
 					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
-					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					  <h2 class="text-h3" style="margin: 0;">Did you know?</h2>
 					</div>
 				</div>
 				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>Scientists</strong> have discovered <em>new organisms</em> living inside human body called <strong>obelisks</strong>.</p>
@@ -95,10 +95,10 @@
 				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
 					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
 					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
-					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					  <h2 class="text-h3" style="margin: 0;">Did you know?</h2>
 					</div>
 				</div>
-				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>The Fish-inspired</strong> Filter Removes over 99% of Microplastics.</p>
+				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center; font-size: 0.95rem;"><strong>The Fish-inspired</strong> Filter Removes over 99% of Microplastics.</p>
 			</div>
 		</div>
 		<div class="carousel-nav">
@@ -111,7 +111,7 @@
 	<h3>Lab to Law Series </h3>
 	<div class="lab-container">
 		<video class="video" height="280" width="280" autoplay muted>
-			<source src="C:\Users\tooba\Downloads\Baseball AI.MP4" type="video/mp4">
+			<source src="{{ url_for('static', filename='videos/baseball_ai.mp4') }}" type="video/mp4">
 		</video>
 		<div class="lab-content">
 			<h3 style="font-size: 22px;">How AI can predict a pitch's movement?</h3>
@@ -129,7 +129,7 @@
     <h2>ARISE for Change</h2>
     <p class="why-intro">ARISE advocates for a world where research not only advances science but also uplifts communities. Through our advocacy and awareness pillars, we aim to empower students to see research as a catalyst for equity, inclusion, and social progress.</p>
     <div class="arise-change">
-		<img src="C:\Users\tooba\Downloads\Movember Post.png" width="280px" height="auto">
+		<img src="{{ url_for('static', filename='images/movember_post.png') }}" width="280px" height="auto">
 		<div class="insta-content">
 			<h3 style="font-size: 22px;"><span style="color: purple;">MOVEMBER:</span> Men's Health Awareness Month</h3>
 			<div class="event-tags" style="justify-content: center;">
