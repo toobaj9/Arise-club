@@ -20,14 +20,15 @@
         <a href="{{ url_for('events') }}">Events</a>
         <a href="{{ url_for('feedback') }}">Feedback</a>
         <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('research_impact') }}">Research Impact</a>
         <a href="{{ url_for('logout') }}">Logout</a>
       {% else %}
         <a href="{{ url_for('join') }}">Join</a>
         <a href="{{ url_for('events') }}">Events</a>
         <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('research_impact') }}">Research Impact</a>
         <a href="{{ url_for('login') }}">Member Login</a>
       {% endif %}
-      <a href="{{ url_for('research_impact') }}">Research Impact</a>
     </div>
   </nav>
 
