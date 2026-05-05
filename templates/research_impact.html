@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTSC Arise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="{{ url_for('home') }}" class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="logo-img">
+      <span class="logo-text">ARISE Club</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if 'user_id' in session %}
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('resources') }}">Resources</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('join') }}">Join</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('login') }}">Member Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <section class="mission">
+    <h2>Research & Impact</h2>
+    <div class="why-grid">
+      <div class="why-card">
+		  <div class="why-icon">📣</div>
+		  <h3>Advocacy & Awareness</h3>
+		  <ul style="list-style: none; padding: 0; text-align: center; display: inline-block;">
+			<li style="margin-bottom: 8px;">📢 <strong>Raise awareness</strong> across disciplines</li>
+			<li style="margin-bottom: 8px;">📖 <strong>Showcase</strong> real-world stories</li>
+			<li style="margin-bottom: 8px;">💡 <strong>Encourage</strong> critical thinking</li>
+		  </ul>
+	  </div>
+      
+	  <div class="why-card">
+		  <div class="why-icon">🚀</div>
+		  <h3>Pathways & Exploration</h3>
+		  <ul style="list-style: none; padding: 0; text-align: center; display: inline-block;">
+			<li style="margin-bottom: 8px;">📢 <strong>Empower students</strong> with research tools</li>
+			<li style="margin-bottom: 8px;">📖 <strong>Receive Guidance</strong> to get involved in Research Opportunities </li>
+			<li style="margin-bottom: 8px;">💡 <strong>Mentorship & Leadership</strong> towards Research careers</li>
+		  </ul>
+	  </div>
+	  <div class="why-card">
+		  <div class="why-icon">🤝</div>
+		  <h3>Community Diversity</h3>
+		  <ul style="list-style: none; padding: 0; text-align: center; display: inline-block;">
+			<li style="margin-bottom: 8px;">📢 <strong>Celebrate</strong> diverse voices & perspectives in research</li>
+			<li style="margin-bottom: 8px;">📖 <strong>Build</strong> a vibrant network of curious minds</li>
+			<li style="margin-bottom: 8px;">💡 <strong>Encourage</strong> collaboration and exploration beyond the lab</li>
+		  </ul>
+	  </div>
+	  
+      
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission">
+    <h2>ARISE Research Spotlight</h2>
+    <p>At ARISE, we connect students with the research shaping tomorrow. From Canadian breakthroughs like the discovery of insulin to global innovations transforming healthcare, we spotlight studies that drive social and scientific change.</p>
+    
+	<div class="carousel">
+		<div class="fact-container">
+			<div class="fact-box" style="background: #FCF2F4">
+				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
+					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					</div>
+				</div>
+				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>Insulin</strong> was discovered <em>in</em> Canada, transforming diabetes care worldwide.</p>
+			</div>
+			<div class="fact-box" style="background: #F4F8FD;">
+				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
+					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					</div>
+				</div>
+				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>Scientists</strong> have discovered <em>new organisms</em> living inside human body called <strong>obelisks</strong>.</p>
+			</div>
+			<div class="fact-box" style="background: #F1FAEE;">
+				<div style="margin: 0px auto; padding: 1rem; padding-bottom: 0.5rem; outline-style: solid; outline-color: purple; outline-width: 2px; background: linear-gradient(300deg, #F6F4FC, #ECFEF6); border-radius: 8px;">
+					<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+					  <div class="why-icon" style="font-size: 3.4rem; background-color: #ECFEF6;">💡</div>
+					  <h3 class="text-h3" style="margin: 0;">Did you know?</h3>
+					</div>
+				</div>
+				<p style="color: purple; padding: 1rem; padding-top: 1.5rem; text-align: center;"><strong>The Fish-inspired</strong> Filter Removes over 99% of Microplastics.</p>
+			</div>
+		</div>
+		<div class="carousel-nav">
+			<span class="carousel-button active"></span>
+			<span class="carousel-button"></span>
+			<span class="carousel-button"></span>
+		</div>
+		
+	</div>
+	<h3>Lab to Law Series </h3>
+	<div class="lab-container">
+		<video class="video" height="280" width="280" autoplay muted>
+			<source src="C:\Users\tooba\Downloads\Baseball AI.MP4" type="video/mp4">
+		</video>
+		<div class="lab-content">
+			<h3 style="font-size: 22px;">How AI can predict a pitch's movement?</h3>
+			<p><span style="color: purple; font-weight: italic;">Ever wondered what happens when Baseball meets AI?</span> Professional baseball analytics often use costly stadium grade camera, but it is not cost efficient for minor league games and training! Waterloo steps up the game with PitcherNet. </p>
+			<div class="learn-more">
+				<a href="https://www.instagram.com/p/DQfbNK4ER7-/">Learn More</a>
+			</div>
+		</div>
+	</div>
+	
+  </section>
+
+  <!-- why ARISE-->
+  <section class="why-arise">
+    <h2>ARISE for Change</h2>
+    <p class="why-intro">ARISE advocates for a world where research not only advances science but also uplifts communities. Through our advocacy and awareness pillars, we aim to empower students to see research as a catalyst for equity, inclusion, and social progress.</p>
+    <div class="arise-change">
+		<img src="C:\Users\tooba\Downloads\Movember Post.png" width="280px" height="auto">
+		<div class="insta-content">
+			<h3 style="font-size: 22px;"><span style="color: purple;">MOVEMBER:</span> Men's Health Awareness Month</h3>
+			<div class="event-tags" style="justify-content: center;">
+				<span class="tag">#ARISE4Change</span>
+				<span class="tag">#ResearchForImpact</span>
+			</div>
+			<p>Movember is an annual movement held every November that raises awareness for men's health focussing on <em>Prostate cancer, Testicular cancer, Men's mental health & suicide prevention.</em></p>
+			<h3 style="font-size: 20px;">Donate to support the cause</h3>
+			<div class="don-links">
+				<a href="https://donate.cancer.ca/page/ca-general?ccs_campaign=alwaysonsearch2025&ccs_id=15687&msclkid=b7b25774fd531069171c3e2300d5844b&s_src=cpc-google-alwaysonsearch2025&s_subsrc=alwaysonsearch2025-ao&utm_campaign=alwaysonsearch2025&utm_content=ao-EN&utm_medium=cpc&utm_source=bing"  style="color: purple; font-style: italic;">Prostate Cancer Center</a>
+				<a href="https://www.canadahelps.org/en/dn/41035"  style="color: purple; font-style: italic;">Testicular Canada Canada</a>
+			</div>
+			<div class="learn-more">
+				<a href="https://www.instagram.com/p/DQhRrnpkfcB/">Learn More</a>
+			</div>
+		</div>
+	</div>
+
+   
+  </section>
+  <script>
+	const fact_container = document.querySelector('.fact-container');
+	const fact_box = document.querySelector('.fact-box');
+	const carousel_btns = document.querySelectorAll('.carousel-button');
+	
+	carousel_btns.forEach(function(dot, index) {
+		dot.addEventListener('click', function() {
+			const card_width = fact_box.offsetWidth;
+			
+			fact_container.scrollTo({
+				left: card_width * index,
+				behavior: 'smooth',
+			});
+			
+			carousel_btns.forEach(function(b) {
+				b.classList.remove('active');
+			});
+			dot.classList.add('active');
+		});
+	});
+  
+  </script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Arise Club Logo" class="footer-logo-img">
+          <span class="footer-logo-text">ARISE Club</span>
+        </div>
+        <p class="footer-tagline">Empowering students to explore, engage, and drive societal change through research across every discipline.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('join') }}">Join Us</a></li>
+          <li><a href="{{ url_for('events') }}">Events</a></li>
+          <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <div class="contact-item">
+          <span>📧 utsc.arise@outlook.com</span>
+        </div>
+        <div class="contact-item">
+          <span>📍 University of Toronto Scarborough</span>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/utsc.arise/" target="_blank" class="social-link">
+            📱 Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Arise Club - University of Toronto Scarborough. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
