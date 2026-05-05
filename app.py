@@ -85,6 +85,10 @@ def resources():
         return redirect(url_for('login'))
     
     return render_template('resources.html', user_email=session.get('email'))
+
+@app.route('/research-impact')
+def research_impact():
+    return render_template('research_impact.html')
    
 @app.route('/join')
 def join():
