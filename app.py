@@ -86,9 +86,9 @@ def resources():
     
     return render_template('resources.html', user_email=session.get('email'))
 
-@app.route('/research-impact')
-def research_impact():
-    return render_template('research_impact.html')
+@app.route('/explore')
+def explore():
+    return render_template('explore.html')
    
 @app.route('/join')
 def join():
