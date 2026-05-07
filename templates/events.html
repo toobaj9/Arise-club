@@ -32,107 +32,137 @@
 
   <section class="events-section">
     <div class="events-header">
-      <h2>Upcoming Events</h2>
+      <h2>ARISE Events</h2>
       <p>Join us for exciting events that combine academic excellence with fun and networking opportunities!</p>
     </div>
 
-    <div class="events-container">
-      <div class="event-card featured">
+
+	
+	<div class="event-tabs">
+	 <button class="event-tab-btn active" onclick="showTab('all-events', this)">All Events</button>
+	 <button class="event-tab-btn" onclick="showTab('upcoming', this)">Upcoming</button>
+	 <button class="event-tab-btn" onclick="showTab('past', this)">Past</button>
+	</div>
+	 
+	<!-- upcoming events Tab -->
+	<div id="upcoming-tab" class="event-tab-content">
+	 <p style="padding: 80px; font-style: italic; font-size: 20px; color: purple;"> Stay Tuned for Upcoming Events ! </p>
+	</div>
+	 
+	<!-- past events Tab -->
+	<div id="past-tab" class="event-tab-content">
+	 <div class="events-container">
+	  <div class="event-card featured">
+		<div class="event-date">
+         <span class="month">MAR</span>
+         <span class="day">31</span>
+        </div>
+	   <div class="event-content">
+         <h3>🌙 De-stress Night - Research Murder Mystery</h3>
+         <p class="event-time">📅 March 31, 2026 • 5:30 - 7:00 PM EST</p>
+         <p class="event-location">📍 BV 361</p>
+         <p class="event-description">ARISE x UPDSS hosted an interactive murder mystery experience where students stepped into the role of forensic investigators. Participants analyzed evidence, questioned suspects, and uncovered how bias can influence case outcomes through engaging, hands-on stations like DNA clues and interrogation tactics. The event combined critical thinking, real research concepts, and a fun break from finals, with free pizza and snacks provided.</p>
+         <div class="event-tags">
+          <span class="tag">Critical Thinking</span>
+          <span class="tag">Interactive</span>
+          <span class="tag">Research</span>
+         </div>
+       </div>
+      </div>
+	  
+	  <div class="event-card featured">
+		<div class="event-date">
+         <span class="month">MAR</span>
+         <span class="day">20</span>
+        </div>
+	   <div class="event-content">
+         <h3>🎤 Women In STEM Resarch Panel</h3>
+         <p class="event-time">📅 March 20, 2026 • 7:00 - 8:00 PM EST</p>
+         <p class="event-location">📍 Virtual (Zoom)</p>
+         <p class="event-description">ARISE, in collaboration with SPARK Health, hosted a Women in STEM Research Panel in celebration of International Women’s Month. This virtual event brought together inspiring women from diverse fields across research and industry to share their academic journeys, professional experiences, and advice for students interested in STEM. Attendees had the opportunity to hear from experts in quantum computing, epidemiology, biomedical engineering, and clinical research, and to engage in meaningful discussions about career pathways, challenges, and opportunities in STEM.</p>
+         <div class="event-tags">
+          <span class="tag">Panel</span>
+          <span class="tag">Research</span>
+          <span class="tag">Opportunities</span>
+          <span class="tag">Faculty</span>
+         </div>
+       </div>
+      </div>
+	  
+	  <div class="event-card featured">
+		<div class="event-date">
+         <span class="month">FEB</span>
+         <span class="day">13</span>
+        </div>
+	   <div class="event-content">
+         <h3>👔 Kickstart Research Pack: Interview Edition</h3>
+         <p class="event-time">📅 February 13, 2026 • 3:30 - 5:30 PM EST</p>
+         <p class="event-location">📍 BV 264</p>
+         <p class="event-description">ARISE hosted the Kickstart Research Pack: Interview Edition, an interactive workshop designed to help students prepare for research-based interviews. This in-person session focused on providing practical interview tips, exploring common research interview questions, and engaging participants in mock interview scenarios to build confidence and readiness. Attendees also had the opportunity to connect and network with students who have prior research experience, gaining valuable insights into academic and professional pathways in research. Light refreshments were provided to create a welcoming and collaborative environment for learning and discussion.</p>
+         <div class="event-tags">
+          <span class="tag">Interview Tips</span>
+          <span class="tag">Research</span>
+          <span class="tag">Network</span>
+          <span class="tag">Free</span>
+         </div>
+       </div>
+      </div>
+		
+	   <div class="event-card featured">
         <div class="event-date">
-          <span class="month">Sep</span>
-          <span class="day">TBD</span>
+         <span class="month">Oct</span>
+         <span class="day">10</span>
         </div>
         <div class="event-content">
-          <h3>🎪 Club Fair 2025</h3>
-          <p class="event-time">📅 September 2025 • All Day</p>
-          <p class="event-location">📍 Campus Wide</p>
-          <p class="event-description">Join us at the UTSC Club Fair! Come visit our booth to learn more about ARISE, meet our executive team, and discover exciting research opportunities. We'll have interactive activities, sign-up forms, and information about our upcoming events. Perfect opportunity to connect with like-minded students passionate about research and academic excellence!</p>
-          <div class="event-tags">
-            <span class="tag">Recruitment</span>
-            <span class="tag">Networking</span>
-            <span class="tag">Information</span>
-          </div>
+         <h3>👋 Meet the Members & CV Workshop</h3>
+         <p class="event-time">📅 October 10, 2025 • 3:00 - 5:00 PM EST</p>
+         <p class="event-location">📍 AA 209</p>
+         <p class="event-description">ARISE hosted its first official event, featuring meet-the-member sessions, interactive ice-breakers, and CV and resume workshops. Attendees built connections, developed professional skills, and gained valuable insights to support their future goals.</p>
+         <div class="event-tags">
+          <span class="tag">Workshop</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Professional Development</span>
+         </div>
         </div>
-      </div>
-
-      <div class="event-card featured">
+       </div>
+		
+	   <div class="event-card featured">
         <div class="event-date">
-          <span class="month">Oct</span>
-          <span class="day">TBD</span>
+         <span class="month">Sep</span>
+         <span class="day">23</span>
         </div>
         <div class="event-content">
-          <h3>👋 Meet the Members & CV Workshop</h3>
-          <p class="event-time">📅 First or Second Week of October 2025 • 1 Hour</p>
-          <p class="event-location">📍 TBD</p>
-          <p class="event-description">Our first official event! Join us for a quick 1-hour session featuring meet the members, ice-breakers, and workshops for CVs and Resumes. This event will be held a couple of weeks following the club fair. Final details will be announced by September 14th!</p>
-          <div class="event-tags">
-            <span class="tag">Workshop</span>
-            <span class="tag">Networking</span>
-            <span class="tag">Professional Development</span>
-          </div>
+         <h3>🎪 Club Fair 2025</h3>
+         <p class="event-time">📅 September 23, 2025 • 12:00 - 2:00 PM EST</p>
+         <p class="event-location">📍 Campus Wide</p>
+         <p class="event-description">ARISE participated in the campus Club Fair, where we hosted an interactive booth to connect with students and introduce them to our community. Attendees had the opportunity to meet our executive team, learn about our initiatives, and explore exciting opportunities in research. The booth featured engaging activities, sign-up forms, and meaningful conversations, allowing students to connect with like-minded peers passionate about research and innovation.</p>
+         <div class="event-tags">
+          <span class="tag">Recruitment</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Information</span>
+         </div>
         </div>
-      </div>
-
-      <div class="event-card">
+       </div>
+		
+       <div class="event-card featured">
         <div class="event-date">
-          <span class="month">Fall</span>
-          <span class="day">TBD</span>
+          <span class="month">Aug</span>
+          <span class="day">30</span>
         </div>
         <div class="event-content">
-          <h3>🔬 Multi-Disciplinary Research Mix & Mingle</h3>
-          <p class="event-time">📅 Fall 2025 • TBD</p>
-          <p class="event-location">📍 TBD</p>
-          <p class="event-description">A mix-and-mingle concept to introduce research across multiple disciplines. We'll explore research in sociology, anthropology, political science, economics, AI, business, population health, and computer science. Perfect for discovering new research interests and connecting with like-minded students!</p>
-          <div class="event-tags">
-            <span class="tag">Research</span>
-            <span class="tag">Networking</span>
-            <span class="tag">Academic</span>
-          </div>
+         <h3>🎓 Frosh Week 2025</h3>
+         <p class="event-time">📅 August 30, 2025 • All Day</p>
+         <p class="event-location">📍 Campus Wide</p>
+         <p class="event-description">ARISE participated in Frosh Week 2025! We hosted exciting activities including dice games with research article titles and bingo games to engage new students. Our tabling featured interactive sign-up forms and fun activities to introduce students to our club's mission of academic excellence, research, and innovation.</p>
+         <div class="event-tags">
+          <span class="tag">Frosh</span>
+          <span class="tag">Recruitment</span>
+          <span class="tag">Interactive</span>
+         </div>
         </div>
+       </div>
       </div>
-
-      <div class="event-card featured">
-        <div class="event-date">
-          <span class="month">Winter</span>
-          <span class="day">TBD</span>
-        </div>
-        <div class="event-content">
-          <h3>🎤 Research Opportunities Panelist Event</h3>
-          <p class="event-time">📅 Winter 2025 • TBD</p>
-          <p class="event-location">📍 TBD</p>
-          <p class="event-description">Our grand finale event! Join us for an exciting panel discussion featuring professors and researchers who will share available research opportunities across various disciplines. This is your chance to discover what research is available and connect directly with faculty members. We're currently compiling our panelist list throughout the fall semester and will reach out to potential speakers in November. Stay tuned for updates!</p>
-          <div class="event-tags">
-            <span class="tag">Panel</span>
-            <span class="tag">Research</span>
-            <span class="tag">Opportunities</span>
-            <span class="tag">Faculty</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="past-events">
-      <h3>Past Events</h3>
-      <div class="events-container">
-        <div class="event-card featured">
-          <div class="event-date">
-            <span class="month">Aug</span>
-            <span class="day">30</span>
-          </div>
-          <div class="event-content">
-            <h3>🎓 Frosh Week 2025</h3>
-            <p class="event-time">📅 August 30, 2025 • All Day</p>
-            <p class="event-location">📍 Campus Wide</p>
-            <p class="event-description">ARISE participated in Frosh Week 2025! We hosted exciting activities including dice games with research article titles and bingo games to engage new students. Our tabling featured interactive sign-up forms and fun activities to introduce students to our club's mission of academic excellence, research, and innovation.</p>
-            <div class="event-tags">
-              <span class="tag">Frosh</span>
-              <span class="tag">Recruitment</span>
-              <span class="tag">Interactive</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	 </div>
 
     <div class="event-cta">
       <h3>Want to Stay Updated?</h3>
@@ -188,12 +218,36 @@
   </footer>
 
   <script>
+    // Tab functionality
+    function showTab(tabName, btn) {
+      // Hide all tabs
+      document.querySelectorAll('.event-tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.event-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+	  if (tabName === 'all-events') {
+	   upcoming_content = document.getElementById('upcoming-tab');
+	   if (!upcoming_content.textContent.includes("Stay Tuned for Upcoming Events !")) {
+	     document.getElementById('upcoming-tab').classList.add('active');
+	   }
+	   document.getElementById('past-tab').classList.add('active');
+	  } else {
+	   // Show selected tab
+       document.getElementById(tabName + '-tab').classList.add('active');
+	  }
+      btn.classList.add('active');
+    }
     // Add RSVP functionality
     document.querySelectorAll('.rsvp-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         alert('RSVP feature coming soon! Please email utsc.arise@outlook.com to reserve your spot.');
       });
     });
+	
+	showTab('all-events', document.querySelector('.event-tab-btn'));
   </script>
 </body>
 </html>
