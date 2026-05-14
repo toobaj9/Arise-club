@@ -636,7 +636,11 @@ button:hover {
 
 .benefit-card:nth-child(1), .benefit-card:nth-child(4) {
   grid-column: auto;
+}
 
+.benefit-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 
 .benefit-card:hover {
